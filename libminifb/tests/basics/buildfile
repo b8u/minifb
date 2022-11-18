@@ -1,0 +1,3 @@
+import libs = libminifb%lib{minifb}
+
+exe{driver}: {h c}{**} $libs testscript{**}

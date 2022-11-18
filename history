@@ -1,0 +1,4 @@
+Let's track how I build the package.
+
+$ bdep new -t empty minifb
+$ bdep new --package -l c -t lib,split,no-subdir,no-version libminifb

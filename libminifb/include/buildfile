@@ -1,0 +1,13 @@
+pub_hdrs = h{**}
+
+./: $pub_hdrs
+
+h{export}@./: c.importable = false
+
+# Install recreating subdirectories.
+#
+h{*}:
+{
+  install         = include/
+  install.subdirs = true
+}

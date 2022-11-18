@@ -1,0 +1,3 @@
+# libminifb
+
+C library
