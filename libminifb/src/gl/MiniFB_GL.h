@@ -1,1 +1,1 @@
-./upstream/src/gl/MiniFB_GL.h
+../../../upstream/src/gl/MiniFB_GL.h
