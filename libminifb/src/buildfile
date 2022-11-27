@@ -14,7 +14,30 @@ lib{minifb}: $pub/{$pub_hdrs}
 
 # Private headers and sources as well as dependencies.
 #
-lib{minifb}: {h c}{**} $impl_libs $intf_libs
+
+lib{minifb}: {h c}{MiniFB_internal} {c}{MiniFB_common MiniFB_timer} {h}{WindowData}  $impl_libs $intf_libs # {cxx}{MiniFB_cpp}
+lib{minifb}: c{MiniFB_linux}: include = ($cc.target.class == 'linux')
+lib{minifb}: gl/{h c}{MiniFB_GL} #: include = ($config.libminifb.use_opengl_api)
+lib{minifb}: x11/{c}{X11MiniFB} x11/{h}{WindowData_X11}
+
+#lib{minifb}: c{windows/WinMiniFB} {h}{windows/WindowData_Win}: include = ($cc.target.class == 'windows')
+
+# TODO: split up macos, linux, windows
+if $config.libminifb.use_opengl_api
+{
+  lib{minifb}:
+  {
+    cc.poptions =+ -DUSE_OPENGL_API
+    cc.loptions =+ -lX11 -lGL
+  }
+}
+
+#switch cc.target.class
+#{
+#  case 'linux'
+#    
+#    
+#}
 
 # Build options.
 #

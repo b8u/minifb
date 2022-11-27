@@ -1,3 +1,4 @@
 import libs = libminifb%lib{minifb}
 
-exe{driver}: {h c}{**} $libs testscript{**}
+#exe{noise}: {c}{noise} $libs testscript{**}
+exe{input_events}: {c}{input_events} $libs testscript{**}
