@@ -1,20 +1,13 @@
-# Configuration parameters (same as cmake options in the original
-# CMakeLists.txt).
-config [bool] config.libminifb.use_metal_api ?= true
-config [bool] config.libminifb.use_inverted_y_on_macos ?= false
-config [bool] config.libminifb.use_wayland_api ?= false
-config [bool] config.libminifb.use_opengl_api ?= true
-
 # Uncomment to suppress warnings coming from external libraries.
 #
 #c.internal.scope = current
 
 using c
-#using cxx
+using cxx
 
 h{*}: extension = h
 c{*}: extension = c
-#cxx{*}: extencion = cpp
+cxx{*}: extencion = cpp
 
 # Assume headers are importable unless stated otherwise.
 #
@@ -23,3 +16,20 @@ h{*}: c.importable = true
 # The test target for cross-testing (running tests under Wine, etc).
 #
 test.target = $c.target
+
+
+# Configuration parameters (same as cmake options in the original
+# CMakeLists.txt).
+config [bool] config.libminifb.use_metal_api ?= ($cc.target.class == 'macos') # enabled for macos
+assert! ($config.libminifb.use_metal_api && ($cc.target.class != 'macos')) 'MetalAPI supported only on MacOS'
+
+config [bool] config.libminifb.use_inverted_y_on_macos ?= false
+assert! ($config.libminifb.use_inverted_y_on_macos && ($cc.target.class != 'macos')) 'Inverted Y supported only on MacOS'
+
+config [bool] config.libminifb.use_wayland_api ?= false
+assert! ($config.libminifb.use_wayland_api && ($cc.target.class != 'linux')) 'Wayland supported only on Linux'
+
+config [bool] config.libminifb.use_opengl_api ?= ($cc.target.class != 'macos') # enabled for windows and unix it's
+assert! ($config.libminifb.use_opengl_api && ($cc.target.class == 'macos')) 'OpenGL is not supported on MacOS'
+assert! ($config.libminifb.use_opengl_api && $config.libminifb.use_wayland_api) 'OpenGL can not be used with WaylandAPI'
+

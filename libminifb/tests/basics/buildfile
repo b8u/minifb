@@ -1,4 +1,4 @@
 import libs = libminifb%lib{minifb}
 
-#exe{noise}: {c}{noise} $libs testscript{**}
+exe{noise}: {c}{noise} $libs testscript{**}
 exe{input_events}: {c}{input_events} $libs testscript{**}
