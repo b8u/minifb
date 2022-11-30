@@ -15,7 +15,7 @@ h{*}: c.importable = true
 
 # The test target for cross-testing (running tests under Wine, etc).
 #
-test.target = $c.target
+test.target = $cc.target
 
 
 # Configuration parameters (same as cmake options in the original

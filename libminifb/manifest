@@ -1,13 +1,12 @@
 : 1
 name: libminifb
-version: 0.1.0-a.0.z
+version: 2022.11.12
+upstream-version: 5312cb7ca07115c918148131d296864b8d67e2d7
 project: minifb
-summary: minifb C library
-license: other: proprietary ; Not free/open source.
+summary: MiniFB (Mini FrameBuffer) is a C/C++ library that makes it easy to render pixels in a window.
+license: MIT ; MIT License.
 description-file: README.md
-url: https://example.org/minifb
-email: ildar@L0074.dock
-#build-error-email: ildar@L0074.dock
+url: https://github.com/emoon/minifb
+package-url: https://github.com/b8u/minifb
 depends: * build2 >= 0.15.0
 depends: * bpkg >= 0.15.0
-#depends: libhello ^1.0.0
