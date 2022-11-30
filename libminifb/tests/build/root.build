@@ -1,7 +1,9 @@
 using c
+using cxx
 
-h{*}: extension = h
-c{*}: extension = c
+h{*}:   extension = h
+c{*}:   extension = c
+cxx{*}: extension = cpp
 
 # Assume headers are importable unless stated otherwise.
 #
