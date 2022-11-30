@@ -91,7 +91,7 @@ lib{minifb}: \
   {h}{WindowData} \
   $impl_libs \
   $intf_libs \
-  # {cxx}{MiniFB_cpp.cpp}
+  {cxx}{MiniFB_cpp.cpp}
 
 lib{minifb}: c{MiniFB_linux}:                                  include = ($cc.target.class == 'linux')
 lib{minifb}: windows/c{WinMiniFB} windows/{h}{WindowData_Win}: include = ($cc.target.class == 'windows')
@@ -106,22 +106,22 @@ src_pfx_inc = [dir_path] $src_root/include/
 out_pfx_src = [dir_path] $out_root/src/
 src_pfx_src = [dir_path] $src_root/src/
 
-c.poptions =+ "-I$out_pfx_src" "-I$src_pfx_src" \
+cc.poptions =+ "-I$out_pfx_src" "-I$src_pfx_src" \
               "-I$out_pfx_inc" "-I$src_pfx_inc"
 
-{hbmia obja}{*}: c.poptions += -DLIBMINIFB_STATIC_BUILD
-{hbmis objs}{*}: c.poptions += -DLIBMINIFB_SHARED_BUILD
+{hbmia obja}{*}: cc.poptions += -DLIBMINIFB_STATIC_BUILD
+{hbmis objs}{*}: cc.poptions += -DLIBMINIFB_SHARED_BUILD
 
 # Export options.
 #
 lib{minifb}:
 {
-  c.export.poptions = "-I$out_pfx_inc" "-I$src_pfx_inc"
-  c.export.libs = $intf_libs
+  cc.export.poptions = "-I$out_pfx_inc" "-I$src_pfx_inc"
+  cc.export.libs = $intf_libs
 }
 
-liba{minifb}: c.export.poptions += -DLIBMINIFB_STATIC
-libs{minifb}: c.export.poptions += -DLIBMINIFB_SHARED
+liba{minifb}: cc.export.poptions += -DLIBMINIFB_STATIC
+libs{minifb}: cc.export.poptions += -DLIBMINIFB_SHARED
 
 # For pre-releases use the complete version to make sure they cannot be used
 # in place of another pre-release or the final version. See the version module
