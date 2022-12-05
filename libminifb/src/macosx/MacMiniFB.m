@@ -1,1 +1,1 @@
-./upstream/src/macosx/MacMiniFB.m
+../../../upstream/src/macosx/MacMiniFB.m

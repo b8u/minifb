@@ -1,1 +1,1 @@
-./upstream/src/macosx/OSXWindow.m
+../../../upstream/src/macosx/OSXWindow.m

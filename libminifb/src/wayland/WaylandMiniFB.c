@@ -1,1 +1,1 @@
-./upstream/src/wayland/WaylandMiniFB.c
+../../../upstream/src/wayland/WaylandMiniFB.c

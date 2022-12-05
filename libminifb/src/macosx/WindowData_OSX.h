@@ -1,1 +1,1 @@
-./upstream/src/macosx/WindowData_OSX.h
+../../../upstream/src/macosx/WindowData_OSX.h
