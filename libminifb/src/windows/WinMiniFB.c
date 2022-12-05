@@ -1,1 +1,1 @@
-./upstream/src/windows/WinMiniFB.c
+../../../upstream/src/windows/WinMiniFB.c
