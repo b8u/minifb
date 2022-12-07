@@ -3,9 +3,10 @@ import libs = libminifb%lib{minifb}
 exe{noise}:            {c}{noise}              $libs
 exe{input_events}:     {c}{input_events}       $libs
 exe{input_events_cpp}: {cxx}{input_events_cpp} $libs
-exe{multiple_windows}: {c}{multiple_windows}   $libs libm%lib{m}
 exe{hidpi}:            {c}{hidpi}              $libs
 exe{fullscreen}:       {c}{fullscreen}         $libs
+exe{multiple_windows}: {c}{multiple_windows}   $libs
+exe{multiple_windows}: libm%lib{m} : include = ($cc.target.class == 'linux')
 
 # Disable all tests. There is no auto-checks in the original repo.
 # Technically, we could use testscripts and parse logs, but it makes
