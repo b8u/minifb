@@ -38,7 +38,10 @@ if $config.libminifb.use_wayland_api
 else
 {
   if ($cc.target.class == 'linux')
+  {
     impl_libs =+ libX11%lib{X11}
+    c.coptions =+ -Wno-switch
+  }
 }
 if $config.libminifb.use_inverted_y_on_macos
 {
