@@ -19,7 +19,7 @@ if $config.libminifb.use_opengl_api
   lib{minifb}: cc.poptions =+ -DUSE_OPENGL_API
   switch $cc.target.class
   {
-    case 'linux'
+    case 'linux' | 'bsd'
     {
       impl_libs =+ libGL%lib{GL}
     }
@@ -31,13 +31,13 @@ if $config.libminifb.use_opengl_api
 }
 if $config.libminifb.use_wayland_api
 {
-  # Can be linux only (checked in the config).
+  # Can be linux/bsd only (checked in the config).
   impl_libs =+ libwayland-client%lib{wayland-client}
   impl_libs =+ libwayland-cursor%lib{wayland-cursor}
 }
 else
 {
-  if ($cc.target.class == 'linux')
+  if ($cc.target.class == 'linux' || $cc.target.class == 'bsd')
   {
     impl_libs =+ libX11%lib{X11}
     c.coptions =+ -Wno-switch
@@ -97,7 +97,7 @@ lib{minifb}: \
   {cxx}{MiniFB_cpp.cpp}
 
 info "cc.target.class = ", $cc.target.class
-lib{minifb}: c{MiniFB_linux}:                                  include = ($cc.target.class == 'linux')
+lib{minifb}: c{MiniFB_linux}:                                  include = ($cc.target.class == 'linux' || $cc.target.class == 'bsd')
 lib{minifb}: windows/c{WinMiniFB} windows/{h}{WindowData_Win}: include = ($cc.target.class == 'windows')
 lib{minifb}: gl/{h c}{MiniFB_GL}:                              include = ($config.libminifb.use_opengl_api)
 lib{minifb}: x11/{c}{X11MiniFB} x11/{h}{WindowData_X11}:       include = (!$config.libminifb.use_wayland_api)

@@ -11,5 +11,5 @@ package-url: https://github.com/b8u/minifb
 depends: * build2 >= 0.15.0
 depends: * bpkg >= 0.15.0
 
-requires: libx11 ? ($linux && !$config.libminifb.use_wayland_api)
-requires: libgl ? (($linux && !$config.libminifb.use_wayland_api) || $windows)
+requires: libx11 ? (($linux || $bsd) && !$config.libminifb.use_wayland_api)
+requires: libgl ? ((($linux || $bsd) && !$config.libminifb.use_wayland_api) || $windows)
