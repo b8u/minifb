@@ -6,7 +6,7 @@ exe{input_events_cpp}: {cxx}{input_events_cpp} $libs
 exe{hidpi}:            {c}{hidpi}              $libs
 exe{fullscreen}:       {c}{fullscreen}         $libs
 exe{multiple_windows}: {c}{multiple_windows}   $libs
-exe{multiple_windows}: libm%lib{m} : include = ($cc.target.class == 'linux')
+exe{multiple_windows}: libm%libs{m} : include = ($cc.target.class == 'linux' || $cc.target.class == 'bsd')
 
 # Disable all tests. There is no auto-checks in the original repo.
 # Technically, we could use testscripts and parse logs, but it makes
