@@ -3,3 +3,11 @@
 # Local default options files.
 #
 .build2/local/
+
+# Tests
+libminifb/tests/basics/fullscreen
+libminifb/tests/basics/hidpi
+libminifb/tests/basics/input_events
+libminifb/tests/basics/input_events_cpp
+libminifb/tests/basics/multiple_windows
+libminifb/tests/basics/noise
