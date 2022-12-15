@@ -10,6 +10,6 @@ url: https://github.com/emoon/minifb
 package-url: https://github.com/b8u/minifb
 depends: * build2 >= 0.15.0
 depends: * bpkg >= 0.15.0
+depends: libopengl-meta ^1.0.0-
 
 requires: libx11 ? (($linux || $bsd) && !$config.libminifb.use_wayland_api)
-requires: libgl ? ((($linux || $bsd) && !$config.libminifb.use_wayland_api) || $windows)
