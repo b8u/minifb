@@ -17,7 +17,11 @@ lib{minifb}: $pub/{$pub_hdrs}
 if $config.libminifb.use_opengl_api
 {
   lib{minifb}: cc.poptions =+ -DUSE_OPENGL_API
-  import impl_libs =+ libopengl-meta%lib{opengl-gl} libopengl-meta%lib{opengl-glut} libopengl-meta%lib{opengl-glu}
+  import impl_libs =+ libopengl-meta%lib{opengl-gl}
+  if ($cc.target.class != 'windows')
+  {
+    import impl_libs =+ libopengl-meta%lib{opengl-glut} libopengl-meta%lib{opengl-glu}
+  }
 }
 if $config.libminifb.use_wayland_api
 {
@@ -29,7 +33,7 @@ else
 {
   if ($cc.target.class == 'linux' || $cc.target.class == 'bsd')
   {
-    import impl_libs =+ libX11%lib{X11}
+    cc.loptions =+ -lX11
     c.coptions =+ -Wno-switch
   }
 }
@@ -59,7 +63,7 @@ switch $cc.target.class
   case 'windows'
   {
     cc.poptions =+ -D_WIN32_WINNT=0x0601
-    import impl_libs =+ winmm%lib{winmm} # winmm.lib
+    import impl_libs =+ winmm%lib{winmm}
   }
 }
 
