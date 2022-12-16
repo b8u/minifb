@@ -63,7 +63,7 @@ switch $cc.target.class
   case 'windows'
   {
     cc.poptions =+ -D_WIN32_WINNT=0x0601
-    import impl_libs =+ winmm%lib{winmm}
+    import impl_libs =+ winmm%lib{winmm} gdi32%lib{gdi32}
   }
 }
 
