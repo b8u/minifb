@@ -74,7 +74,7 @@ switch $cc.target.system
   case 'win32-msvc'
   {
     # What to do with `if(MSVC_VERSION GREATER_EQUAL 1900)`?
-    cc.coptions =+ /GS /Gy /EHsc /fp:fast /Zc:__cplusplus
+    cc.coptions =+ /GS /Gy /EHsc /fp:fast /Zc:__cplusplus /wd4244
     cc.poptions =+ -D_CRT_SECURE_NO_WARNINGS
   }
 }
