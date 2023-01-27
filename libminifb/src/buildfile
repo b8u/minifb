@@ -33,7 +33,7 @@ else
 {
   if ($cc.target.class == 'linux' || $cc.target.class == 'bsd')
   {
-    c.libs =+ -lX11
+    cc.libs =+ -lX11
     c.coptions =+ -Wno-switch
   }
 }
