@@ -1,0 +1,37 @@
+intf_libs = # Interface dependencies.
+impl_libs = # Implementation dependencies.
+#import xxxx_libs += libhello%lib{hello}
+
+lib{minifb}: {h c}{*} $impl_libs $intf_libs
+
+h{export}@./: c.importable = false
+
+# Build options.
+#
+c.poptions =+ "-I$out_root/libminifb" "-I$src_root/libminifb"
+
+# Export options.
+#
+lib{minifb}:
+{
+  c.export.poptions = "-I$out_root/libminifb" "-I$src_root/libminifb"
+  c.export.libs = $intf_libs
+}
+
+# For pre-releases use the complete version to make sure they cannot be used
+# in place of another pre-release or the final version. See the version module
+# for details on the version.* variable values.
+#
+if $version.pre_release
+  lib{minifb}: bin.lib.version = "-$version.project_id"
+else
+  lib{minifb}: bin.lib.version = "-$version.major.$version.minor"
+
+# Install into the libminifb/ subdirectory of, say, /usr/include/
+# recreating subdirectories.
+#
+h{*}:
+{
+  install         = include/
+  install.subdirs = true
+}

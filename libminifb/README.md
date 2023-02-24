@@ -1,1 +1,3 @@
-../upstream/README.md
+# libminifb
+
+C library

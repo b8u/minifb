@@ -1,1 +1,0 @@
-../../../upstream/src/macosx/WindowData_OSX.h

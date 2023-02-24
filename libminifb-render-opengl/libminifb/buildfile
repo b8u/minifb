@@ -1,0 +1,34 @@
+intf_libs = # Interface dependencies.
+impl_libs = # Implementation dependencies.
+#import xxxx_libs += libhello%lib{hello}
+
+lib{minifb-render-opengl}: {h c}{MiniFB_GL} $impl_libs $intf_libs
+
+h{export}@./: c.importable = false
+
+# Build options.
+c.poptions =+ "-I$out_root" "-I$src_root"
+
+# Export options.
+lib{minifb-render-opengl}:
+{
+  c.export.poptions = "-I$out_root" "-I$src_root"
+  c.export.libs = $intf_libs
+}
+
+
+# For pre-releases use the complete version to make sure they cannot be used
+# in place of another pre-release or the final version. See the version module
+# for details on the version.* variable values.
+if $version.pre_release
+  lib{minifb-render-opengl}: bin.lib.version = "-$version.project_id"
+else
+  lib{minifb-render-opengl}: bin.lib.version = "-$version.major.$version.minor"
+
+# Install into the libminifb-render-opengl/ subdirectory of, say, /usr/include/
+# recreating subdirectories.
+h{*}:
+{
+  install         = include/libminifb-render-opengl/
+  install.subdirs = true
+}

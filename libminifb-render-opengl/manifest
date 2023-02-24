@@ -1,8 +1,8 @@
 : 1
-name: libminifb
+name: libminifb-render-opengl
 version: 0.1.0-a.0.z
 project: minifb
-summary: minifb C library
+summary: minifb-render-opengl C library
 license: other: proprietary ; Not free/open source.
 description-file: README.md
 url: https://example.org/minifb
@@ -10,4 +10,4 @@ email: lily.coder@gmail.com
 #build-error-email: lily.coder@gmail.com
 depends: * build2 >= 0.15.0
 depends: * bpkg >= 0.15.0
-#depends: libhello ^1.0.0
+depends: libminifb == $

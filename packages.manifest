@@ -1,2 +1,4 @@
 : 1
 location: libminifb/
+:
+location: libminifb-render-opengl/

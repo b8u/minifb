@@ -1,4 +1,4 @@
-project = libminifb
+project = libminifb-render-opengl
 
 using version
 using config
