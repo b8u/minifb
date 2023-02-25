@@ -1,6 +1,6 @@
 $out_root/
 {
-  include libminifb/libminifb
+  include libminifb/libminifb/
 }
 
 export $out_root/libminifb/$import.target

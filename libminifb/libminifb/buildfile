@@ -1,6 +1,5 @@
 intf_libs = # Interface dependencies.
 impl_libs = # Implementation dependencies.
-#import xxxx_libs += libhello%lib{hello}
 
 lib{minifb}: {h c}{*} $impl_libs $intf_libs
 
@@ -8,13 +7,13 @@ h{export}@./: c.importable = false
 
 # Build options.
 #
-c.poptions =+ "-I$out_root/libminifb" "-I$src_root/libminifb"
+c.poptions =+ "-I$out_root" "-I$src_root/libminifb"
 
 # Export options.
 #
 lib{minifb}:
 {
-  c.export.poptions = "-I$out_root/libminifb" "-I$src_root/libminifb"
+  c.export.poptions = "-I$out_root" "-I$src_root/libminifb"
   c.export.libs = $intf_libs
 }
 
